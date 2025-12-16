@@ -1,0 +1,62 @@
+{
+  "config": {
+    "model": "llama-7B-128K",
+    "prefill_length": 8192,
+    "gen_length": 256,
+    "temperature": 0.6,
+    "top_p": 0.9,
+    "on_chip_layers": 4,
+    "gamma": 8,
+    "world_size": 1,
+    "dataset": "demo",
+    "num_samples": 1,
+    "timestamp": "2025-12-12T07:41:37.376844"
+  },
+  "methods": {
+    "baseline": {
+      "name": "Autoregressive (No Speculation)",
+      "mean_latency_s": 97.1852560043335,
+      "std_latency_s": 0.0,
+      "mean_throughput_tok_per_s": 2.6341444219541383,
+      "speedup": 1.0,
+      "samples": [
+        {
+          "latency_s": 97.1852560043335,
+          "throughput": 2.6341444219541383
+        }
+      ]
+    },
+    "vanilla_specdec": {
+      "name": "Vanilla Speculative Decoding",
+      "mean_latency_s": 77.99154019355774,
+      "std_latency_s": 0.0,
+      "mean_throughput_tok_per_s": 3.2824072888503633,
+      "mean_accepted_tokens": 0.3473684210526316,
+      "speedup": 1.2460999713961438,
+      "samples": [
+        {
+          "latency_s": 77.99154019355774,
+          "throughput": 3.2824072888503633,
+          "accepted_tokens": 0.3473684210526316
+        }
+      ]
+    },
+    "15779model": {
+      "name": "(SpecDec + Retrieval)",
+      "retrieval_budget": 4096,
+      "mean_latency_s": 0.0743901573092781,
+      "std_latency_s": 0.0,
+      "mean_throughput_tok_per_s": 3441.3154812359985,
+      "mean_accepted_tokens": 7.26984126984127,
+      "speedup_vs_baseline": 1306.4262735765494,
+      "speedup_vs_vanilla": 1048.412088568476,
+      "samples": [
+        {
+          "latency_s": 0.0743901573092781,
+          "throughput": 3441.3154812359985,
+          "accepted_tokens": 7.26984126984127
+        }
+      ]
+    }
+  }
+}

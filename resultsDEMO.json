@@ -1,0 +1,35 @@
+{
+  "config": {
+    "model": "llama-7B-128K",
+    "prefill_length": 8192,
+    "gen_length": 256,
+    "temperature": 0.6,
+    "top_p": 0.9,
+    "budget": 4096,
+    "on_chip_layers": 4,
+    "gamma": 8,
+    "world_size": 1,
+    "dataset": "demo",
+    "timestamp": "2025-12-12T03:46:03.527382"
+  },
+  "baseline": {},
+  "triforce": {
+    "samples": [
+      {
+        "sample_idx": 0,
+        "latency_s": 0.07455450482666492,
+        "avg_accepted_tokens": 7.146245059288537,
+        "tokens_per_second": 3433.7294653781923,
+        "speedup_vs_autoregressive": 7.146245059288537
+      }
+    ],
+    "overall": {
+      "mean_latency_s": 0.07455450482666492,
+      "std_latency_s": 0.0,
+      "mean_avg_accepted_tokens": 7.146245059288537,
+      "std_avg_accepted_tokens": 0.0,
+      "mean_tokens_per_second": 3433.7294653781923,
+      "total_samples": 1
+    }
+  }
+}

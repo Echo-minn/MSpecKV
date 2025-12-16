@@ -1,0 +1,209 @@
+{
+  "config": {
+    "model": "llama-7B-128K",
+    "prefill_length": 8192,
+    "prefill_lengths_sweep": [
+      8192,
+      16384,
+      24576,
+      32768
+    ],
+    "gen_length": 256,
+    "temperature": 0.6,
+    "top_p": 0.9,
+    "on_chip_layers": 16,
+    "gamma": 8,
+    "world_size": 1,
+    "dataset": "demo",
+    "resident_layers": 16,
+    "num_samples": 1,
+    "timestamp": "2025-12-15T19:21:45.631732"
+  },
+  "methods": {
+    "triforce_kv_quant": {
+      "name": "TriForce with KV Cache Quantization",
+      "retrieval_budget": 4096,
+      "kv_cache_quant_bits": 8,
+      "kv_fp16_tail": 0,
+      "kv_resident_gpu": true,
+      "sweep": {
+        "8192": {
+          "prefill_length": 8192,
+          "resident_layers": 16,
+          "mean_latency_s": 10.925784549197635,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 23.43081165908585,
+          "mean_accepted_tokens": 6.801498127340824,
+          "mean_latency_s_per_token": 0.04267884589530326,
+          "speedup_vs_baseline": 4.971189315942941,
+          "speedup_vs_vanilla": 4.2257510079145995,
+          "speedup_vs_triforce": 1.635407095025268
+        },
+        "16384": {
+          "prefill_length": 16384,
+          "resident_layers": 16,
+          "mean_latency_s": 12.572679281234741,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 20.361610622016812,
+          "mean_accepted_tokens": 5.2522796352583585,
+          "mean_latency_s_per_token": 0.04911202844232321,
+          "speedup_vs_baseline": 7.838618154153936,
+          "speedup_vs_vanilla": 7.398624680538356,
+          "speedup_vs_triforce": 2.0616198563948416
+        },
+        "24576": {
+          "prefill_length": 24576,
+          "resident_layers": 16,
+          "mean_latency_s": 11.062966907070768,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 23.140266273089956,
+          "mean_accepted_tokens": 5.615384615384615,
+          "mean_latency_s_per_token": 0.04321471448074519,
+          "speedup_vs_baseline": 13.290732843663056,
+          "speedup_vs_vanilla": 10.78865340148823,
+          "speedup_vs_triforce": 3.9145677062732878
+        },
+        "32768": {
+          "prefill_length": 32768,
+          "resident_layers": 16,
+          "mean_latency_s": 12.936325788497925,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 19.78923569067944,
+          "mean_accepted_tokens": 5.088757396449704,
+          "mean_latency_s_per_token": 0.05053252261132002,
+          "speedup_vs_baseline": 15.156567985374856,
+          "speedup_vs_vanilla": 12.585446607885386,
+          "speedup_vs_triforce": 4.187114081682018
+        }
+      }
+    },
+    "triforce": {
+      "name": "TriForce (SpecDec + Retrieval)",
+      "sweep": {
+        "8192": {
+          "prefill_length": 8192,
+          "resident_layers": 16,
+          "mean_latency_s": 17.86810557047526,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 14.327204358082984,
+          "mean_accepted_tokens": 6.744525547445256,
+          "mean_latency_s_per_token": 0.06979728738466899,
+          "speedup_vs_baseline": 3.0397259074298764,
+          "speedup_vs_vanilla": 2.583913828409378
+        },
+        "16384": {
+          "prefill_length": 16384,
+          "resident_layers": 16,
+          "mean_latency_s": 25.920085254277566,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 9.876510724738166,
+          "mean_accepted_tokens": 6.542857142857143,
+          "mean_latency_s_per_token": 0.10125033302452174,
+          "speedup_vs_baseline": 3.8021646570000263,
+          "speedup_vs_vanilla": 3.5887434133838547
+        },
+        "24576": {
+          "prefill_length": 24576,
+          "resident_layers": 16,
+          "mean_latency_s": 43.30673298998931,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 5.911320996187277,
+          "mean_accepted_tokens": 4.5,
+          "mean_latency_s_per_token": 0.16916692574214573,
+          "speedup_vs_baseline": 3.3951981012779524,
+          "speedup_vs_vanilla": 2.7560267725600656
+        },
+        "32768": {
+          "prefill_length": 32768,
+          "resident_layers": 16,
+          "mean_latency_s": 54.165871874245894,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 4.726223194456132,
+          "mean_accepted_tokens": 4.168734491315137,
+          "mean_latency_s_per_token": 0.21158543700877303,
+          "speedup_vs_baseline": 3.6198125223486306,
+          "speedup_vs_vanilla": 3.0057567962967107
+        }
+      }
+    },
+    "baseline": {
+      "name": "Autoregressive (No Speculation)",
+      "sweep": {
+        "8192": {
+          "prefill_length": 8192,
+          "mean_latency_s": 54.31414341926575,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 4.71332113302176,
+          "mean_latency_ms_per_token": 212.16462273150682,
+          "mean_accepted_tokens": null,
+          "speedup_vs_baseline": 1.0
+        },
+        "16384": {
+          "prefill_length": 16384,
+          "mean_latency_s": 98.5524320602417,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 2.597602054544083,
+          "mean_latency_ms_per_token": 384.97043773531914,
+          "mean_accepted_tokens": null,
+          "speedup_vs_baseline": 1.0
+        },
+        "24576": {
+          "prefill_length": 24576,
+          "mean_latency_s": 147.03493762016296,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 1.7410827939501543,
+          "mean_latency_ms_per_token": 574.3552250787616,
+          "mean_accepted_tokens": null,
+          "speedup_vs_baseline": 1.0
+        },
+        "32768": {
+          "prefill_length": 32768,
+          "mean_latency_s": 196.07030129432678,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 1.3056541368583456,
+          "mean_latency_ms_per_token": 765.899614430964,
+          "mean_accepted_tokens": null,
+          "speedup_vs_baseline": 1.0
+        }
+      }
+    },
+    "vanilla_specdec": {
+      "name": "Vanilla Speculative Decoding (No Retrieval)",
+      "gamma": 8,
+      "sweep": {
+        "8192": {
+          "prefill_length": 8192,
+          "mean_latency_s": 46.16964507102966,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 5.5447686376223375,
+          "mean_accepted_tokens": 0.3473684210526316,
+          "speedup_vs_baseline": 1.1764037461346342
+        },
+        "16384": {
+          "prefill_length": 16384,
+          "mean_latency_s": 93.0205352306366,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 2.7520804880908236,
+          "mean_accepted_tokens": 0.14732142857142858,
+          "speedup_vs_baseline": 1.059469630183155
+        },
+        "24576": {
+          "prefill_length": 24576,
+          "mean_latency_s": 119.35451555252075,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 2.1448706721728494,
+          "mean_accepted_tokens": 0.29949238578680204,
+          "speedup_vs_baseline": 1.2319176776806715
+        },
+        "32768": {
+          "prefill_length": 32768,
+          "mean_latency_s": 162.80943751335144,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 1.572390421034446,
+          "mean_accepted_tokens": 0.2549019607843137,
+          "speedup_vs_baseline": 1.2042932172052234
+        }
+      }
+    }
+  }
+}

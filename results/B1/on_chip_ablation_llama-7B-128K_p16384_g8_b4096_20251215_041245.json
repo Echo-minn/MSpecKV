@@ -1,0 +1,129 @@
+{
+  "config": {
+    "model": "llama-7B-128K",
+    "prefill_length": 16384,
+    "gen_length": 256,
+    "temperature": 0.6,
+    "top_p": 0.9,
+    "on_chip_layers": 4,
+    "gamma": 8,
+    "world_size": 1,
+    "dataset": "demo",
+    "on_chip_layers_sweep": [
+      4,
+      8,
+      12,
+      16,
+      18
+    ],
+    "resident_layers": 16,
+    "num_samples": 1,
+    "timestamp": "2025-12-15T04:13:02.417541"
+  },
+  "methods": {
+    "triforce_kv_quant": {
+      "name": "On chip layer ablation study for offloading with and without KV Cache Quantization",
+      "retrieval_budget": 4096,
+      "kv_cache_quant_bits": 8,
+      "kv_fp16_tail": 0,
+      "kv_resident_gpu": true,
+      "sweep": {
+        "4": {
+          "on_chip_layers": 4,
+          "resident_layers": 16,
+          "baseline": {
+            "mean_latency_s": 37.51950847919171,
+            "std_latency_s": 0.0,
+            "mean_throughput_tok_per_s": 6.823117102985968,
+            "mean_accepted_tokens": 6.0134228187919465,
+            "mean_latency_s_per_token": 0.1465605799968426
+          },
+          "quant": {
+            "mean_latency_s": 27.410629569324538,
+            "std_latency_s": 0.0,
+            "mean_throughput_tok_per_s": 9.339442545547794,
+            "mean_accepted_tokens": 5.847176079734219,
+            "mean_latency_s_per_token": 0.10707277175517398
+          },
+          "speedup_vs_triforce_baseline": 1.368794116322673
+        },
+        "8": {
+          "on_chip_layers": 8,
+          "resident_layers": 16,
+          "baseline": {
+            "mean_latency_s": 37.37088729396011,
+            "std_latency_s": 0.0,
+            "mean_throughput_tok_per_s": 6.850252122361964,
+            "mean_accepted_tokens": 5.572755417956657,
+            "mean_latency_s_per_token": 0.14598002849203168
+          },
+          "quant": {
+            "mean_latency_s": 32.06050422108772,
+            "std_latency_s": 0.0,
+            "mean_throughput_tok_per_s": 7.9849024904485635,
+            "mean_accepted_tokens": 4.405194805194805,
+            "mean_latency_s_per_token": 0.1252363446136239
+          },
+          "speedup_vs_triforce_baseline": 1.165636293061776
+        },
+        "12": {
+          "on_chip_layers": 12,
+          "resident_layers": 16,
+          "baseline": {
+            "mean_latency_s": 31.670728377713502,
+            "std_latency_s": 0.0,
+            "mean_throughput_tok_per_s": 8.083173741597482,
+            "mean_accepted_tokens": 5.557632398753894,
+            "mean_latency_s_per_token": 0.12371378272544337
+          },
+          "quant": {
+            "mean_latency_s": 22.231839372177994,
+            "std_latency_s": 0.0,
+            "mean_throughput_tok_per_s": 11.51501662612635,
+            "mean_accepted_tokens": 5.787781350482315,
+            "mean_latency_s_per_token": 0.08684312254757029
+          },
+          "speedup_vs_triforce_baseline": 1.424566264964463
+        },
+        "16": {
+          "on_chip_layers": 16,
+          "resident_layers": 16,
+          "baseline": {
+            "mean_latency_s": 26.410948785745873,
+            "std_latency_s": 0.0,
+            "mean_throughput_tok_per_s": 9.692949771579752,
+            "mean_accepted_tokens": 6.01980198019802,
+            "mean_latency_s_per_token": 0.10316776869431982
+          },
+          "quant": {
+            "mean_latency_s": 11.26417477683876,
+            "std_latency_s": 0.0,
+            "mean_throughput_tok_per_s": 22.726920087069644,
+            "mean_accepted_tokens": 5.908496732026144,
+            "mean_latency_s_per_token": 0.0440006827220264
+          },
+          "speedup_vs_triforce_baseline": 2.344685634677092
+        },
+        "18": {
+          "on_chip_layers": 18,
+          "resident_layers": 16,
+          "baseline": {
+            "mean_latency_s": 29.45191261985085,
+            "std_latency_s": 0.0,
+            "mean_throughput_tok_per_s": 8.692134983024964,
+            "mean_accepted_tokens": 5.132947976878612,
+            "mean_latency_s_per_token": 0.11504653367129239
+          },
+          "quant": {
+            "mean_latency_s": 11.793275789450144,
+            "std_latency_s": 0.0,
+            "mean_throughput_tok_per_s": 21.707285114879507,
+            "mean_accepted_tokens": 5.670886075949367,
+            "mean_latency_s_per_token": 0.046067483552539625
+          },
+          "speedup_vs_triforce_baseline": 2.497347907881329
+        }
+      }
+    }
+  }
+}

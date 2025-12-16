@@ -1,0 +1,124 @@
+{
+  "config": {
+    "model": "llama-7B-128K",
+    "prefill_length": 8192,
+    "gen_length": 256,
+    "temperature": 0.6,
+    "top_p": 0.9,
+    "on_chip_layers": 8,
+    "gamma": 8,
+    "world_size": 1,
+    "dataset": "demo",
+    "resident_layers_sweep": [
+      4,
+      8,
+      10,
+      12,
+      16,
+      18
+    ],
+    "num_samples": 1,
+    "timestamp": "2025-12-14T18:06:44.325326"
+  },
+  "methods": {
+    "triforce_kv_quant": {
+      "name": "TriForce with KV Cache Quantization",
+      "retrieval_budget": 4096,
+      "kv_cache_quant_bits": 8,
+      "kv_fp16_tail": 0,
+      "kv_resident_gpu": true,
+      "sweep": {
+        "4": {
+          "resident_layers": 4,
+          "mean_latency_s": 16.780587432049074,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 15.255723378972311,
+          "mean_accepted_tokens": 6.519572953736655,
+          "mean_latency_s_per_token": 0.0655491696564417,
+          "samples": [
+            {
+              "latency_s": 16.780587432049074,
+              "throughput_tok_per_s": 15.255723378972311,
+              "accepted_tokens": 6.519572953736655
+            }
+          ]
+        },
+        "8": {
+          "resident_layers": 8,
+          "mean_latency_s": 13.989297866821289,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 18.29970327582777,
+          "mean_accepted_tokens": 7.003891050583658,
+          "mean_latency_s_per_token": 0.05464569479227066,
+          "samples": [
+            {
+              "latency_s": 13.989297866821289,
+              "throughput_tok_per_s": 18.29970327582777,
+              "accepted_tokens": 7.003891050583658
+            }
+          ]
+        },
+        "10": {
+          "resident_layers": 10,
+          "mean_latency_s": 12.837773213859732,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 19.94115301270636,
+          "mean_accepted_tokens": 7.483870967741935,
+          "mean_latency_s_per_token": 0.05014755161663958,
+          "samples": [
+            {
+              "latency_s": 12.837773213859732,
+              "throughput_tok_per_s": 19.94115301270636,
+              "accepted_tokens": 7.483870967741935
+            }
+          ]
+        },
+        "12": {
+          "resident_layers": 12,
+          "mean_latency_s": 14.746523117006516,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 17.360024323616084,
+          "mean_accepted_tokens": 6.136986301369863,
+          "mean_latency_s_per_token": 0.057603605925806704,
+          "samples": [
+            {
+              "latency_s": 14.746523117006516,
+              "throughput_tok_per_s": 17.360024323616084,
+              "accepted_tokens": 6.136986301369863
+            }
+          ]
+        },
+        "16": {
+          "resident_layers": 16,
+          "mean_latency_s": 15.113935433759652,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 16.938010693639637,
+          "mean_accepted_tokens": 6.622710622710622,
+          "mean_latency_s_per_token": 0.05903881028812364,
+          "samples": [
+            {
+              "latency_s": 15.113935433759652,
+              "throughput_tok_per_s": 16.938010693639637,
+              "accepted_tokens": 6.622710622710622
+            }
+          ]
+        },
+        "18": {
+          "resident_layers": 18,
+          "mean_latency_s": 13.753347433958536,
+          "std_latency_s": 0.0,
+          "mean_throughput_tok_per_s": 18.61365032980318,
+          "mean_accepted_tokens": 7.264,
+          "mean_latency_s_per_token": 0.05372401341390053,
+          "samples": [
+            {
+              "latency_s": 13.753347433958536,
+              "throughput_tok_per_s": 18.61365032980318,
+              "accepted_tokens": 7.264
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+timestamp,model,world_size,on_chip_layers,prefill_length,gen_length,budget,gamma,temperature,top_p,dataset,mean_latency_s,std_latency_s,mean_accepted_tokens,std_accepted_tokens,mean_tokens_per_s,num_samples
+2025-12-12T03:46:03.527382,llama-7B-128K,1,4,8192,256,4096,8,0.6,0.9,demo,0.0746,0.0000,7.15,0.00,3433.73,1

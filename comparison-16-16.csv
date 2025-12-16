@@ -1,0 +1,4 @@
+timestamp,model,prefill_length,gen_length,gamma,budget,on_chip_layers,baseline_latency_s,baseline_throughput,vanilla_latency_s,vanilla_throughput,vanilla_accepted_tokens,vanilla_speedup,triforce_latency_s,triforce_throughput,triforce_accepted_tokens,triforce_speedup_vs_baseline,triforce_speedup_vs_vanilla,triforce_quant_latency_s,triforce_quant_throughput,triforce_quant_accepted_tokens,triforce_quant_speedup_vs_baseline,triforce_quant_speedup_vs_vanilla,triforce_quant_speedup_vs_triforce
+2025-12-14T01:10:06.705705,llama-7B-128K,8192,256,8,4096,16,50.1046,5.11,43.1797,5.93,0.35,1.16,15.1140,16.94,6.66,3.32,2.86,8.8000,29.09,7.60,5.69,4.91,1.72
+2025-12-14T01:16:51.215337,llama-7B-128K,8192,256,8,4096,16,50.0624,5.11,43.0597,5.95,0.35,1.16,14.3596,17.83,6.66,3.49,3.00,11.6948,21.89,7.60,4.28,3.68,1.23
+2025-12-14T01:42:09.370316,llama-7B-128K,8192,256,8,4096,16,50.0231,5.12,42.8211,5.98,0.35,1.17,14.6728,17.45,6.66,3.41,2.92,9.0893,28.17,7.60,5.50,4.71,1.61
