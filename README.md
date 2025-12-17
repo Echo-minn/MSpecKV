@@ -10,10 +10,12 @@ offloaded KV in quantized form and reconstructs only the necessary subsets on de
 speculative acceptance. Across prefill lengths from 8K to 32K, MSpecKV improves throughput by up to 14.1×
 over naive autoregressive decoding and up to 3.8× over non-quantized variant, with comparable acceptance rates.
 These results demonstrate that reducing KV-cache traffic is critical for scalable long-context serving, and that
-quantization combined with structured speculative decoding provides a practical and effective solution. 
+quantization combined with structured speculative decoding provides a practical and effective solution.
 
 ## Recorded Video
+
 The recorded video is available at: https://youtu.be/fJIsocqpJF4
+![model](images/procedure.png)
 
 ## Evaluation Results(A1)
 
@@ -31,6 +33,7 @@ SPEEDUP SUMMARY (latency-based)
 ```
 
 ## Resident Layer Abalation(A2)
+
 **Run (final)**:
 
 ```bash
@@ -47,13 +50,14 @@ done
 
 **Throughput**
 
-| resident_layers | baseline | quant | delta | speedup |
-|---:|---:|---:|---:|---:|
-| 0 | 12.42 ± 4.40 | 13.21 ± 3.58 | 0.78 ± 1.17 | 1.09 ± 0.10 |
-| 8 | 12.18 ± 4.59 | 14.89 ± 4.31 | 2.71 ± 1.17 | 1.26 ± 0.17 |
-| 16 | 8.50 ± 1.31 | 24.12 ± 1.94 | 15.62 ± 2.53 | 2.89 ± 0.56 |
+| resident_layers |      baseline |         quant |         delta |      speedup |
+| --------------: | ------------: | ------------: | ------------: | -----------: |
+|               0 | 12.42 ± 4.40 | 13.21 ± 3.58 |  0.78 ± 1.17 | 1.09 ± 0.10 |
+|               8 | 12.18 ± 4.59 | 14.89 ± 4.31 |  2.71 ± 1.17 | 1.26 ± 0.17 |
+|              16 |  8.50 ± 1.31 | 24.12 ± 1.94 | 15.62 ± 2.53 | 2.89 ± 0.56 |
 
 ## On-Chip Layer Abalation(B1)
+
 **Run**:
 
 ```bash
@@ -70,15 +74,16 @@ done
 
 **Throughput**
 
-| on_chip_layers | baseline | quant | delta | speedup |
-|---:|---:|---:|---:|---:|
-| 4 | 6.72 ± 0.52 | 9.74 ± 0.85 | 3.02 ± 1.36 | 1.46 ± 0.25 |
-| 8 | 7.52 ± 1.58 | 9.69 ± 1.55 | 2.18 ± 2.13 | 1.32 ± 0.35 |
-| 12 | 8.19 ± 0.68 | 10.89 ± 0.61 | 2.70 ± 0.74 | 1.33 ± 0.11 |
-| 16 | 9.23 ± 1.05 | 20.01 ± 2.47 | 10.78 ± 1.96 | 2.17 ± 0.20 |
-| 18 | 9.53 ± 0.73 | 22.08 ± 1.92 | 12.55 ± 1.84 | 2.32 ± 0.23 |
+| on_chip_layers |     baseline |         quant |         delta |      speedup |
+| -------------: | -----------: | ------------: | ------------: | -----------: |
+|              4 | 6.72 ± 0.52 |  9.74 ± 0.85 |  3.02 ± 1.36 | 1.46 ± 0.25 |
+|              8 | 7.52 ± 1.58 |  9.69 ± 1.55 |  2.18 ± 2.13 | 1.32 ± 0.35 |
+|             12 | 8.19 ± 0.68 | 10.89 ± 0.61 |  2.70 ± 0.74 | 1.33 ± 0.11 |
+|             16 | 9.23 ± 1.05 | 20.01 ± 2.47 | 10.78 ± 1.96 | 2.17 ± 0.20 |
+|             18 | 9.53 ± 0.73 | 22.08 ± 1.92 | 12.55 ± 1.84 | 2.32 ± 0.23 |
 
 ## Output Length Sensitivity(B2)
+
 **Run**:
 
 ```bash
@@ -94,11 +99,11 @@ done
 
 **Throughput**
 
-| x | baseline | quant | delta | speedup |
-|---:|---:|---:|---:|---:|
-| 256 | 18.14 ± 1.07 | 24.74 ± 1.73 | 6.61 ± 2.69 | 1.37 ± 0.17 |
-| 512 | 18.34 ± 1.54 | 28.81 ± 4.91 | 10.47 ± 3.73 | 1.57 ± 0.17 |
-| 768 | 19.94 ± 1.72 | 25.71 ± 1.87 | 5.77 ± 3.07 | 1.30 ± 0.17 |
-| 1024 | 19.86 ± 0.24 | 27.75 ± 1.61 | 7.89 ± 1.40 | 1.40 ± 0.07 |
-| 1536 | 19.87 ± 0.31 | 28.03 ± 3.86 | 8.16 ± 3.79 | 1.41 ± 0.19 |
+|    x |      baseline |         quant |         delta |      speedup |
+| ---: | ------------: | ------------: | ------------: | -----------: |
+|  256 | 18.14 ± 1.07 | 24.74 ± 1.73 |  6.61 ± 2.69 | 1.37 ± 0.17 |
+|  512 | 18.34 ± 1.54 | 28.81 ± 4.91 | 10.47 ± 3.73 | 1.57 ± 0.17 |
+|  768 | 19.94 ± 1.72 | 25.71 ± 1.87 |  5.77 ± 3.07 | 1.30 ± 0.17 |
+| 1024 | 19.86 ± 0.24 | 27.75 ± 1.61 |  7.89 ± 1.40 | 1.40 ± 0.07 |
+| 1536 | 19.87 ± 0.31 | 28.03 ± 3.86 |  8.16 ± 3.79 | 1.41 ± 0.19 |
 | 2048 | 19.42 ± 1.26 | 31.12 ± 2.08 | 11.70 ± 2.96 | 1.61 ± 0.19 |
