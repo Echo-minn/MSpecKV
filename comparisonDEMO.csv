@@ -1,2 +1,0 @@
-timestamp,model,prefill_length,gen_length,gamma,budget,on_chip_layers,baseline_latency_s,baseline_throughput,vanilla_latency_s,vanilla_throughput,vanilla_accepted_tokens,vanilla_speedup,triforce_latency_s,triforce_throughput,triforce_accepted_tokens,triforce_speedup_vs_baseline,triforce_speedup_vs_vanilla
-2025-12-12T07:41:37.376844,llama-7B-128K,8192,256,8,4096,4,97.1853,2.63,77.9915,3.28,0.35,1.25,0.0744,3441.32,7.27,1306.43,1048.41
